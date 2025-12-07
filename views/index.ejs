@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Fact Saver</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Dog Fact Saver</h1>
+
+    <form action="/save-fact" method="POST">
+        <label for="userName">Enter your Name:</label>
+        <input type="text" name="userName" id="userName" required>
+        <button type="submit">Fetch & Save Random Fact</button>
+    </form>
+
+    <form action="/delete-all" method="POST" style="margin-top: 10px;">
+        <button type="submit" style="background-color: #d9534f;">Clear All Facts</button>
+    </form>
+
+    <div class="facts-list">
+        <h2>Saved Facts</h2>
+        <% if (facts.length === 0) { %>
+            <p>No facts saved yet.</p>
+        <% } else { %>
+            <ul>
+                <% facts.forEach(fact => { %>
+                    <li>
+                        <strong><%= fact.userName %>:</strong> <%= fact.factText %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
